@@ -23,7 +23,7 @@ namespace GameDevWithMarco.Guns
 
 
         //These three variables will deal with the muzzle flash
-        public Transform tipOfTheBarrel;
+        public Transform[] tipOfTheBarrel;
         public GameObject muzzleFlash;
         public Vector3 muzzleFlashRotationAdjustment = new Vector3(0, 95, 0);
 
@@ -54,10 +54,13 @@ namespace GameDevWithMarco.Guns
 
         public virtual void MuzzleFlash()
         {
-            //THe first line will spawn the muzzle flash
-            GameObject flash = Instantiate(muzzleFlash, tipOfTheBarrel.position, transform.rotation);
-            //The next line will adjust the rotation of it
-            flash.transform.Rotate(muzzleFlashRotationAdjustment);
+            foreach (Transform currentTip in tipOfTheBarrel)
+            {
+                //THe first line will spawn the muzzle flash
+                GameObject flash = Instantiate(muzzleFlash, currentTip.position, transform.rotation);
+                //The next line will adjust the rotation of it
+                flash.transform.Rotate(muzzleFlashRotationAdjustment);
+            }
         }
 
         public virtual void Reload()
