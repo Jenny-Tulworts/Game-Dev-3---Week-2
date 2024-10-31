@@ -19,6 +19,7 @@ namespace GameDevWithMarco.ScriptableObjects
         public string gunSubTitle;
         public string gunDescription;
         public string gunFireSpeed;
+        
 
         public GameObject gunPrefab;
         public Image gunSymbol;
